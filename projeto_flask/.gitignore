@@ -1,0 +1,5 @@
+projeto_flask/
+__pycache__/
+*.pyc
+.env
+venv/
