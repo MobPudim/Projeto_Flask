@@ -10,7 +10,6 @@ def login():
         email = request.form['email']
         senha = request.form['senha']
 
-        # Exemplo simples (sem banco de dados)
         if email == "admin@ifro.edu.br" and senha == "123456":
             session['usuario'] = email
             flash("Login realizado com sucesso!")
@@ -48,6 +47,27 @@ def usuario():
     return render_template('t_usuario.html')
 
 
+# ---------------- VERIFICADOR DE NOME ----------------
+@app.route('/verificar-nome', methods=['GET', 'POST'])
+def verificar_nome():
+    nome = None
+    resultado = None
+
+    if request.method == 'POST':
+        nome = request.form['nome']
+        resultado = f'O nome "{nome}" já existe no sistema! 😅'
+
+    return render_template('t_verificar_nome.html', nome=nome, resultado=resultado)
+
+
+
+# ---------------- RESULTADO DO NOME ----------------
+@app.route('/resultado-nome')
+def resultado_nome():
+    nome = request.args.get('nome', '')
+    return render_template('t_resultado_nome.html', nome=nome)
+
+
 # ---------------- LOGOUT ----------------
 @app.route('/logout')
 def logout():
@@ -56,5 +76,6 @@ def logout():
     return redirect(url_for('login'))
 
 
+# ---------------- EXECUÇÃO ----------------
 if __name__ == '__main__':
     app.run(debug=True)

@@ -3,14 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <title>{% block title %}Meu Site Flask{% endblock %}</title>
-  <link rel="stylesheet" href="{{url_for('static', filename='css/estilo.css')}}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/estilo.css') }}">
 </head>
 <body>
   <header>
     <nav>
-      <a href="{{ url_for('login') }}">Login</a> |
-      <a href="{{ url_for('cadastro') }}">Cadastro</a> |
+      <a href="{{ url_for('login') }}">Login</a>
+      <a href="{{ url_for('cadastro') }}">Cadastro</a>
       <a href="{{ url_for('usuario') }}">Usuário</a>
+      <a href="{{ url_for('verificar_nome') }}">Verificar Nome</a>
+      <a href="{{ url_for('logout') }}">Sair</a>
     </nav>
   </header>
 

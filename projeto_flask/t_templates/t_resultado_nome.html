@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Resultado{% endblock %}
+
+{% block conteudo %}
+<h2>Resultado da Verificação</h2>
+<p>O nome "<strong>{{ nome }}</strong>" já existe no sistema! 😅</p>
+<a href="{{ url_for('verificar_nome') }}">Voltar</a>
+
+{% endblock %}

@@ -1,33 +1,35 @@
-/* ======= CONFIGURAÇÕES GERAIS ======= */
+/* ======= GERAL ======= */
 body {
   font-family: "Segoe UI", Arial, sans-serif;
-  background: linear-gradient(135deg, #e8f1ff, #d6e0f5);
+  background: linear-gradient(135deg, #e6f0ff, #cce0ff);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   margin: 0;
 }
 
-/* ======= CABEÇALHO E MENU ======= */
+/* ======= CABEÇALHO ======= */
 header {
   background: #003366;
   color: white;
   padding: 15px;
   text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 
 nav a {
   color: white;
   text-decoration: none;
-  margin: 0 15px;
+  margin: 0 12px;
   font-weight: bold;
+  transition: 0.3s;
 }
 
 nav a:hover {
-  text-decoration: underline;
+  color: #ffcc00;
 }
 
-/* ======= CONTEÚDO CENTRAL ======= */
+/* ======= CONTEÚDO ======= */
 main {
   flex: 1;
   display: flex;
@@ -37,21 +39,38 @@ main {
 }
 
 .container {
-  background: white;
+  background: #ffffff;
   border-radius: 15px;
   padding: 40px;
   box-shadow: 0px 0px 10px rgba(0,0,0,0.15);
-  width: 350px;
+  width: 380px;
   text-align: center;
 }
 
+h2 {
+  color: #003366;
+  margin-bottom: 20px;
+}
+
 /* ======= FORMULÁRIOS ======= */
-form input {
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+input {
   width: 90%;
   padding: 10px;
-  margin: 10px 0;
+  margin: 8px 0;
   border: 1px solid #ccc;
   border-radius: 8px;
+  transition: 0.2s;
+}
+
+input:focus {
+  border-color: #0044cc;
+  outline: none;
 }
 
 button {
@@ -61,11 +80,13 @@ button {
   border-radius: 8px;
   padding: 10px 25px;
   cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
   margin-top: 10px;
 }
 
 button:hover {
-  background: #003399;
+  background: #002b80;
 }
 
 /* ======= ALERTAS ======= */
@@ -74,6 +95,14 @@ button:hover {
   color: red;
   margin: 10px 0;
   padding: 0;
+  font-weight: bold;
+}
+
+/* ======= RESULTADO ======= */
+#resultado {
+  margin-top: 15px;
+  font-weight: bold;
+  color: #0044cc;
 }
 
 /* ======= RODAPÉ ======= */
@@ -82,4 +111,18 @@ footer {
   color: white;
   text-align: center;
   padding: 10px 0;
+  font-size: 14px;
+  box-shadow: 0 -2px 6px rgba(0,0,0,0.2);
+}
+
+/* ======= MOBILE ======= */
+@media (max-width: 480px) {
+  .container {
+    width: 90%;
+    padding: 25px;
+  }
+  nav a {
+    display: block;
+    margin: 6px 0;
+  }
 }

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Verificar Nome{% endblock %}
+
+{% block conteudo %}
+<h2>Verificador de Nome</h2>
+
+<form method="post">
+  <input type="text" name="nome" placeholder="Digite seu nome" required>
+  <br>
+  <button type="submit">Verificar</button>
+</form>
+
+{% if resultado %}
+  <p id="resultado">{{ resultado }}</p>
+{% endif %}
+{% endblock %}
