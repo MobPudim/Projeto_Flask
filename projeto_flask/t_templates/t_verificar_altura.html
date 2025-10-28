@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Verificar Altura{% endblock %}
+
+{% block conteudo %}
+<main>
+  <div class="container">
+    <h2>Verificar Altura</h2>
+
+    <form method="post" action="{{ url_for('verificar_altura') }}">
+      <label for="altura">Digite sua altura (em metros):</label>
+      <input type="text" name="altura" id="altura" placeholder="Ex: 1.75" required>
+
+      <button type="submit">Verificar</button>
+    </form>
+
+    {% if resultado %}
+      <p id="resultado">{{ resultado }}</p>
+    {% endif %}
+  </div>
+</main>
+{% endblock %}

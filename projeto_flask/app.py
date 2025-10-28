@@ -10,6 +10,7 @@ def login():
         email = request.form['email']
         senha = request.form['senha']
 
+        # Login simples (sem banco de dados)
         if email == "admin@ifro.edu.br" and senha == "123456":
             session['usuario'] = email
             flash("Login realizado com sucesso!")
@@ -39,11 +40,8 @@ def cadastro():
 
 
 # ---------------- PÁGINA DO USUÁRIO ----------------
-@app.route('/usuario')
+@app.route('/usuario', methods=['GET', 'POST'])
 def usuario():
-    if 'usuario' not in session:
-        flash("Você precisa estar logado para acessar esta página.")
-        return redirect(url_for('login'))
     return render_template('t_usuario.html')
 
 
@@ -55,17 +53,28 @@ def verificar_nome():
 
     if request.method == 'POST':
         nome = request.form['nome']
-        resultado = f'O nome "{nome}" já existe no sistema! 😅'
+        resultado = f'O nome \"{nome}\" já existe no sistema!'
 
     return render_template('t_verificar_nome.html', nome=nome, resultado=resultado)
 
 
+# ---------------- VERIFICADOR DE ALTURA ----------------
+@app.route('/verificar-altura', methods=['GET', 'POST'])
+def verificar_altura():
+    altura = None
+    resultado = None
 
-# ---------------- RESULTADO DO NOME ----------------
-@app.route('/resultado-nome')
-def resultado_nome():
-    nome = request.args.get('nome', '')
-    return render_template('t_resultado_nome.html', nome=nome)
+    if request.method == 'POST':
+        try:
+            altura = float(request.form['altura'])
+            if altura > 2.20:
+                resultado = f'Tá mentindo, {altura:.2f}m é muita coisa!'
+            else:
+                resultado = f'Sua altura de {altura:.2f}m foi registrada com sucesso!'
+        except ValueError:
+            resultado = "Por favor, insira um número válido."
+
+    return render_template('t_verificar_altura.html', altura=altura, resultado=resultado)
 
 
 # ---------------- LOGOUT ----------------
@@ -76,6 +85,5 @@ def logout():
     return redirect(url_for('login'))
 
 
-# ---------------- EXECUÇÃO ----------------
 if __name__ == '__main__':
     app.run(debug=True)
