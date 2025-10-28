@@ -1,14 +1,9 @@
-{% extends 'base.html' %}
-
+{% extends "base.html" %}
+{% block title %}Usuário{% endblock %}
 {% block conteudo %}
-
-<h2>Olá, {{nome}}</h2>
-<p>
-
-    <img class="imgquadrada" src="{{url_for('static', filename='imagens/professora.jpg')}}">
-    <br>
-    <b>Profissão: </b> {{dados['profissao']}} <br/>
-    <b>Disciplina: </b> {{dados['disciplina']}}
-</p>
-
+<h2>Bem-vindo(a)!</h2>
+<p>Login realizado com sucesso.</p>
+<img src="{{ url_for('static', filename='img1.jpg') }}" width="250">
+<img src="{{ url_for('static', filename='img2.jpg') }}" width="250">
+<img src="{{ url_for('static', filename='img3.jpg') }}" width="250">
 {% endblock %}

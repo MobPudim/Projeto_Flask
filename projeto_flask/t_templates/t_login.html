@@ -1,23 +1,27 @@
-{% extends 'base.html' %}
-
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
 {% block conteudo %}
+<h2>Login</h2>
+<form action="{{ url_for('usuario') }}" method="post" onsubmit="return validarLogin()">
+  <label>Email:</label><br>
+  <input type="email" name="email" required><br><br>
 
-    {% set mensagens=get_flashed_messages() %}
-    {% if mensagens %}
-    <div>
-        <ul>
-            {% for msg in mensagens %}
-                <li>{{ msg }}</li>
-            {% endfor %}
-        </ul>
-    </div>
-    {% endif %}
-    
-    <form action="/autenticar" method="POST">
-        <br><br/>
-        Usuário: <input type="text" name="nome_usuario"><br><br/>
-        Senha  : <input type="text" name="senha"><br><br/>
-        <button type="submit">OK</button>
-    </form>
+  <label>Senha:</label><br>
+  <input type="password" id="senha" name="senha" required><br><br>
 
+  <button type="submit">Entrar</button>
+</form>
+
+<p>Não tem conta? <a href="{{ url_for('cadastro') }}">Criar Login</a></p>
+
+<script>
+function validarLogin() {
+  const senha = document.getElementById('senha').value;
+  if (senha.length < 6) {
+    alert("A senha deve ter pelo menos 6 caracteres!");
+    return false;
+  }
+  return true;
+}
+</script>
 {% endblock %}
