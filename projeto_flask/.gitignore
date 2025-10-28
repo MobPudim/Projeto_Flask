@@ -1,3 +1,6 @@
+Lib/
+Scripts/
+Include/
 projeto_flask/
 __pycache__/
 *.pyc
