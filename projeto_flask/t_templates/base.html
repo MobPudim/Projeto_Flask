@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>{% block title %}Meu Site Flask{% endblock %}</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/estilo.css')}}">
 </head>
 <body>
   <header>
@@ -15,16 +15,18 @@
   </header>
 
   <main>
-    {% with messages = get_flashed_messages() %}
-      {% if messages %}
-        <ul class="mensagens">
-          {% for msg in messages %}
-            <li>{{ msg }}</li>
-          {% endfor %}
-        </ul>
-      {% endif %}
-    {% endwith %}
-    {% block conteudo %}{% endblock %}
+    <div class="container">
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <ul class="mensagens">
+            {% for msg in messages %}
+              <li>{{ msg }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      {% endwith %}
+      {% block conteudo %}{% endblock %}
+    </div>
   </main>
 
   <footer>
